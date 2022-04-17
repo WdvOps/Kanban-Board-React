@@ -1,13 +1,17 @@
 import React from "react";
-import "./App.css";
+import "./styles.css";
+import Navbar from "./components/Navbar/Navbar";
+import TaskList from "./components/TaskList/TaskList";
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to the Kanban App</h1>
-
+      <Navbar />
       <div>
-        <h2>Olá mundo!</h2>
+        <TaskList title="Iniciada" />
+        <TaskList title="Executando" />
+        <TaskList title="Pendente" />
+        <TaskList title="Finalizada" />
       </div>
     </div>
   );
