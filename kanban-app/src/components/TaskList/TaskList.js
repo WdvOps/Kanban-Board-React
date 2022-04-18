@@ -1,6 +1,8 @@
 import React from "react";
 import "./tasklist.css";
 
+import addIcon from "../../img/added.svg";
+
 import PropTypes from "prop-types";
 
 import TaskItem from "../TaskItem/TaskItem";
@@ -34,8 +36,13 @@ export default function TaskList({
             />
           );
         })}
+
+        {tasks.length === 0 && <div className="empty-list">Lista vazia</div>}
+        <button onClick={addTask} className="btn">
+          <img src={addIcon} alt="Added icon" />
+          Add visit
+        </button>
       </div>
-      <button onClick={addTask}>Add visit</button>
     </div>
   );
 }

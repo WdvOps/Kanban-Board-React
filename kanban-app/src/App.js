@@ -81,7 +81,7 @@ function App() {
           taskState="Cancelada"
           tasks={tasks.filter((tsk) => tsk.state === "Cancelada")}
           onTaskUpdate={updateTask}
-          onDeleteTsak={deleteTask}
+          onDeleteTask={deleteTask}
         />
       </div>
     </div>
