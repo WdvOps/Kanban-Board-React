@@ -11,6 +11,7 @@ export default function TaskList({
   tasks,
   onTaskUpdate,
   taskState,
+  onDeleteTask,
 }) {
   const addTask = () => {
     console.log("Get from TaskList");
@@ -29,6 +30,7 @@ export default function TaskList({
               title={task.title}
               taskState={task.state}
               onTaskUpdate={onTaskUpdate}
+              onDeleteTask={onDeleteTask}
             />
           );
         })}
