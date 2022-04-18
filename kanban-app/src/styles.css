@@ -51,10 +51,10 @@ html {
   
   .App .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 1280px;
     margin: auto;
-    padding: 8px;
+    padding: 18px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 18px;
   }
