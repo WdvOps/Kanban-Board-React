@@ -18,6 +18,10 @@ export default function TaskItem({ id, title, taskState, onTaskUpdate }) {
     }
   };
 
+  const onTaskStateChange = (event) => {
+    onTaskUpdate(id, title, event.target.value);
+  };
+
   if (isEditing) {
     return (
       <input
@@ -29,12 +33,20 @@ export default function TaskItem({ id, title, taskState, onTaskUpdate }) {
     );
   } else {
     return (
-      <div
-        onClick={(e) => {
-          setIsEditing(true);
-        }}
-      >
-        {editableTitle}
+      <div>
+        <div
+          onClick={(e) => {
+            setIsEditing(true);
+          }}
+        >
+          {editableTitle}
+        </div>
+        <select onChange={onTaskStateChange} value={taskState}>
+          <option value="Agendada">Agendada</option>
+          <option value="Atendida">Atendida</option>
+          <option value="Adiada">Adiada</option>
+          <option value="Cancelada">Cancelada</option>
+        </select>
       </div>
     );
   }
