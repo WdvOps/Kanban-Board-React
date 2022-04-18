@@ -3,12 +3,6 @@ import "./styles.css";
 import Navbar from "./components/Navbar/Navbar";
 import TaskList from "./components/TaskList/TaskList";
 
-const task = {
-  id: 0,
-  title: "Nova Tarefa",
-  state: "pendendte",
-};
-
 // Gera novo id
 let idAcc = 0;
 const generateId = () => {
@@ -33,11 +27,52 @@ function App() {
     });
   };
 
+  const updateTask = (id, title, state) => {
+    console.log("Função update task sendo chamada");
+    setTask((existingTasks) => {
+      return existingTasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, title, state };
+        } else {
+          return task;
+        }
+      });
+    });
+  };
+
   return (
     <div className="App">
       <Navbar />
       <div className="container">
-        <TaskList title={`Agendada`} onAddTask={addTask} tasks={tasks} />
+        <TaskList
+          className
+          title="Agendada"
+          onAddTask={addTask}
+          taskState="Agendada"
+          tasks={tasks.filter((tsk) => tsk.state === "Agendada")}
+          onTaskUpdate={updateTask}
+        />
+        <TaskList
+          title="Atendida"
+          onAddTask={addTask}
+          taskState="Atendida"
+          tasks={tasks.filter((tsk) => tsk.state === "Atendida")}
+          onTaskUpdate={updateTask}
+        />
+        <TaskList
+          title="Adiada"
+          onAddTask={addTask}
+          taskState="Adiada"
+          tasks={tasks.filter((tsk) => tsk.state === "Adiada")}
+          onTaskUpdate={updateTask}
+        />
+        <TaskList
+          title="Cancelada"
+          onAddTask={addTask}
+          taskState="Cancelada"
+          tasks={tasks.filter((tsk) => tsk.state === "Cancelada")}
+          onTaskUpdate={updateTask}
+        />
       </div>
     </div>
   );

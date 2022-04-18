@@ -3,10 +3,18 @@ import "./tasklist.css";
 
 import PropTypes from "prop-types";
 
-export default function TaskList({ title, onAddTask, tasks }) {
+import TaskItem from "../TaskItem/TaskItem";
+
+export default function TaskList({
+  title,
+  onAddTask,
+  tasks,
+  onTaskUpdate,
+  taskState,
+}) {
   const addTask = () => {
     console.log("Get from TaskList");
-    onAddTask("Nova Tarefa", "Pendente");
+    onAddTask("Nova Tarefa", taskState);
   };
 
   return (
@@ -14,7 +22,15 @@ export default function TaskList({ title, onAddTask, tasks }) {
       <div className="title">{title}</div>
       <div className="content">
         {tasks.map((task) => {
-          return <div key={task.id}>{task.title}</div>;
+          return (
+            <TaskItem
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              taskState={task.state}
+              onTaskUpdate={onTaskUpdate}
+            />
+          );
         })}
       </div>
       <button onClick={addTask}>Add visit</button>
